@@ -1,0 +1,142 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Raw Luxury Palette */
+  --background: #080805;
+  --foreground: #F0EAD6;
+  --card: #0D0D09;
+  --card-foreground: #F0EAD6;
+  --popover: #0D0D09;
+  --popover-foreground: #F0EAD6;
+  
+  /* Accent - Burnt Amber & Sophisticated Gold */
+  --primary: #A67C52;
+  --primary-foreground: #080805;
+  --secondary: #1A1A15;
+  --secondary-foreground: #F0EAD6;
+  
+  /* Muted tones - Taupe & Charcoal */
+  --muted: #1A1A15;
+  --muted-foreground: #8C8476;
+  --accent: #A67C52;
+  --accent-foreground: #080805;
+  
+  /* Semantic */
+  --destructive: #721C24;
+  --destructive-foreground: #F0EAD6;
+  --border: #1F1F1A;
+  --input: #1A1A15;
+  --ring: #A67C52;
+  
+  /* Text hierarchy */
+  --text-primary: #F0EAD6;
+  --text-secondary: #C9C2B5;
+  --text-muted: #8C8476;
+  --text-subtle: #4D4840;
+  
+  --radius: 0rem; /* Sharp edges for luxury/architectural feel */
+}
+
+@theme inline {
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-serif: 'Newsreader', serif;
+  --font-mono: 'Geist Mono', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary/30 selection:text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+/* Luxury scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-subtle);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Typography utilities */
+.text-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.text-technical {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Grain overlay */
+.noise-overlay::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.04;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Atmospheric light */
+.light-spot {
+  background: radial-gradient(circle at center, rgba(166, 124, 82, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+}
+
+/* Smooth image loading */
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[loading] {
+  opacity: 0;
+}
