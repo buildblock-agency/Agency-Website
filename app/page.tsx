@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import Navigation from "@/components/navigation"
 import HeroSection from "@/components/sections/hero-section"
 import ServicesSection from "@/components/sections/services-section"
@@ -11,8 +11,14 @@ import ContactSection from "@/components/sections/contact-section"
 import Footer from "@/components/footer"
 import Preloader from "@/components/preloader"
 
+import { motion } from "framer-motion"
+
 export default function Home() {
   const [isPreloaderFinished, setIsPreloaderFinished] = useState(false)
+
+  const handlePreloaderComplete = useCallback(() => {
+    setIsPreloaderFinished(true)
+  }, [])
 
   // Ensure body scroll is managed correctly if preloader is active
   useEffect(() => {
@@ -25,28 +31,55 @@ export default function Home() {
 
   return (
     <>
-      <Preloader onComplete={() => setIsPreloaderFinished(true)} />
+      <Preloader onComplete={handlePreloaderComplete} />
       
       {/* 
         We render everything immediately for SEO. 
         The Preloader is a fixed overlay that hides this content initially.
-        We use opacity and pointer-events to manage the transition smoothly.
+        Now using a staggered, granular reveal for maximum cinematic impact.
       */}
-      <div 
-        className={`transition-opacity duration-1000 ${
-          isPreloaderFinished ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <Navigation />
+      <div className={!isPreloaderFinished ? "pointer-events-none" : ""}>
+        {/* 1. Navigation Entry */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={isPreloaderFinished ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 1.2, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+        >
+          <Navigation />
+        </motion.div>
+        
         <main>
-          <HeroSection />
-          <ServicesSection />
-          <PortfolioSection />
-          <ProcessSection />
-          <AboutSection />
-          <ContactSection />
+          {/* 2. Hero Section Entry - Soft & Atmospheric */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05, filter: "blur(20px)" }}
+            animate={isPreloaderFinished ? { opacity: 1, scale: 1, filter: "blur(0px)" } : {}}
+            transition={{ duration: 2.5, delay: 0.7, ease: [0.19, 1, 0.22, 1] }}
+          >
+            <HeroSection isVisible={isPreloaderFinished} />
+          </motion.div>
+          
+          {/* 3. Main Content Entry - Staggered Upward Slide */}
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            animate={isPreloaderFinished ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 2, delay: 1.2, ease: [0.19, 1, 0.22, 1] }}
+          >
+            <ServicesSection />
+            <PortfolioSection />
+            <ProcessSection />
+            <AboutSection />
+            <ContactSection />
+          </motion.div>
         </main>
-        <Footer />
+        
+        {/* 4. Footer Entry */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isPreloaderFinished ? { opacity: 1 } : {}}
+          transition={{ duration: 1.5, delay: 1.8 }}
+        >
+          <Footer />
+        </motion.div>
       </div>
     </>
   )

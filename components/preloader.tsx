@@ -1,21 +1,16 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 const logsList = [
-  "INITIALIZING NEURAL NET...",
-  "COMPILING TURBO ENGINE...",
-  "SYNCING DESIGN SYSTEM...",
-  "EXTRACTING LOGO GEOMETRY...",
-  "RENDERING CINEMATIC CANVAS...",
-  "LOADING WEBGL CONTEXT...",
-  "RESOLVING SHADERS...",
-  "STREAMING HD BACKDROPS...",
-  "OPTIMIZING LAYOUT...",
-  "ESTABLISHING HANDSHAKE...",
-  "COMPILATION COMPLETE",
-  "SYSTEM OPERATIONAL"
+  "LOADING CANVAS...",
+  "CALIBRATING MOTION...",
+  "SETTING THE STAGE...",
+  "REFINING DETAILS...",
+  "CHECKING EVERY PIXEL...",
+  "ALMOST THERE...",
+  "READY."
 ]
 
 interface PreloaderProps {
@@ -28,6 +23,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const [isFinished, setIsFinished] = useState(false)
   const [showContent, setShowContent] = useState(true)
   const [timeString, setTimeString] = useState("")
+  const hasStarted = useRef(false)
 
   useEffect(() => {
     setTimeString(new Date().toLocaleTimeString())
@@ -43,6 +39,9 @@ export default function Preloader({ onComplete }: PreloaderProps) {
 
   // Fast counter progress
   useEffect(() => {
+    if (hasStarted.current) return
+    hasStarted.current = true
+
     let current = 0
     const interval = setInterval(() => {
       // Glitchy increments
@@ -112,11 +111,11 @@ export default function Preloader({ onComplete }: PreloaderProps) {
     }
     .glitch-layer-1 {
       animation: preloader-glitch-1 1s infinite linear alternate-reverse;
-      text-shadow: -2px 0 #00ffff;
+      text-shadow: none;
     }
     .glitch-layer-2 {
       animation: preloader-glitch-2 0.85s infinite linear alternate-reverse;
-      text-shadow: 2px 0 #ff007f;
+      text-shadow: none;
     }
   `
 
@@ -134,8 +133,8 @@ export default function Preloader({ onComplete }: PreloaderProps) {
                   initial={{ y: 0 }}
                   animate={isFinished ? { y: "-100%" } : { y: 0 }}
                   transition={{
-                    duration: 1.1,
-                    delay: i * 0.08,
+                    duration: 1.6,
+                    delay: i * 0.1,
                     ease: [0.85, 0, 0.15, 1] // Viscous, premium ease
                   }}
                   className="h-full bg-background border-r border-border/10 last:border-r-0"

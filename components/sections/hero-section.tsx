@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion"
 import Image from "next/image"
 
-export default function HeroSection() {
+export default function HeroSection({ isVisible = true }: { isVisible?: boolean }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -58,7 +58,7 @@ export default function HeroSection() {
       opacity: 1,
       transition: {
         duration: 1.4,
-        delay: 0.2 + (i * 0.15),
+        delay: 1.2 + (i * 0.15), // Added delay to work with the staggered page reveal
         ease: [0.19, 1, 0.22, 1] // Apple-like smooth ease
       }
     })
@@ -92,7 +92,7 @@ export default function HeroSection() {
           <motion.div
             custom={0}
             initial="hidden"
-            animate="visible"
+            animate={isVisible ? "visible" : "hidden"}
             variants={maskVariants}
             className="flex items-center gap-4"
           >
@@ -109,7 +109,7 @@ export default function HeroSection() {
             <motion.span
               custom={1}
               initial="hidden"
-              animate="visible"
+              animate={isVisible ? "visible" : "hidden"}
               variants={maskVariants}
               className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter block"
             >
@@ -121,7 +121,7 @@ export default function HeroSection() {
             <motion.span
               custom={2}
               initial="hidden"
-              animate="visible"
+              animate={isVisible ? "visible" : "hidden"}
               variants={maskVariants}
               className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter flex items-center gap-4 md:gap-8"
             >
@@ -134,7 +134,7 @@ export default function HeroSection() {
             <motion.span
               custom={3}
               initial="hidden"
-              animate="visible"
+              animate={isVisible ? "visible" : "hidden"}
               variants={maskVariants}
               className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter block"
             >
@@ -150,7 +150,7 @@ export default function HeroSection() {
             <motion.p
               custom={4}
               initial="hidden"
-              animate="visible"
+              animate={isVisible ? "visible" : "hidden"}
               variants={maskVariants}
               className="text-[14px] md:text-[16px] text-muted-foreground leading-relaxed font-serif italic"
             >
@@ -162,7 +162,7 @@ export default function HeroSection() {
           <motion.div
             custom={5}
             initial="hidden"
-            animate="visible"
+            animate={isVisible ? "visible" : "hidden"}
             variants={maskVariants}
             className="flex flex-col sm:flex-row gap-6 items-center"
           >
