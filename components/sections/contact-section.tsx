@@ -16,10 +16,10 @@ const businessTypes = [
 ]
 
 const budgetRanges = [
-  "₹25K - ₹50K",
-  "₹50K - ₹80K",
-  "₹80K - ₹1.2L",
-  "₹1.2L+",
+  "₹50K - ₹1L",
+  "₹1L - ₹2.5L",
+  "₹2.5L - ₹5L",
+  "₹5L+",
 ]
 
 const formSchema = z.object({
@@ -120,12 +120,12 @@ export default function ContactSection() {
             {/* Primary Action - WhatsApp */}
             <div className="mb-16">
               <a 
-                href="https://wa.me/919829425600" 
+                href="https://wa.me/917891998448" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-6 px-10 py-5 bg-[#25D366] text-[#050505] font-sans font-medium uppercase tracking-[0.1em] text-[12px] hover:scale-105 transition-transform duration-500 ease-[0.19,1,0.22,1]"
+                className="group inline-flex items-center gap-6 px-10 py-5 border border-[#25D366]/30 text-foreground font-sans font-medium uppercase tracking-[0.1em] text-[12px] hover:bg-[#25D366] hover:text-[#050505] hover:border-[#25D366] hover:scale-105 transition-all duration-500 ease-[0.19,1,0.22,1]"
               >
-                <span>+91 98294 25600</span>
+                <span>+91 78919 98448</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -136,6 +136,7 @@ export default function ContactSection() {
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
+                  className="text-[#25D366] group-hover:text-inherit"
                 >
                   <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z" />
                 </svg>
@@ -152,10 +153,10 @@ export default function ContactSection() {
                   Email
                 </p>
                 <a 
-                  href="mailto:hello@buildblock.dev" 
+                  href="mailto:buildblock8@gmail.com" 
                   className="text-[20px] text-foreground hover:text-primary transition-colors duration-500 font-serif italic"
                 >
-                  hello@buildblock.dev
+                  buildblock8@gmail.com
                 </a>
               </div>
             </div>

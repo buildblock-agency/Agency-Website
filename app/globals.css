@@ -137,6 +137,10 @@ img {
   transition: opacity 0.3s ease;
 }
 
-img[loading] {
-  opacity: 0;
+/* Services section — scoped color inversion */
+.services-invert {
+  background-color: #F0EAD6;
+  color: #080805;
+  transition: background-color 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+              color 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }

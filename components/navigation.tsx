@@ -55,7 +55,7 @@ export default function Navigation() {
                 alt="BuildBlock Dev Studio"
                 width={40}
                 height={40}
-                className="w-8 h-8 md:w-10 md:h-10 grayscale invert brightness-200 group-hover:opacity-80 transition-opacity"
+                className="w-8 h-8 md:w-10 md:h-10 group-hover:opacity-80 transition-opacity"
               />
               <span className="text-technical text-[14px] font-bold text-foreground hidden sm:block">
                 BuildBlock

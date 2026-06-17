@@ -1,0 +1,16 @@
+{
+  "id": "4AJjoVWnKTP6d1JI",
+  "messages": [
+    {
+      "parts": [
+        {
+          "type": "text",
+          "text": "Tell me about your tech stack."
+        }
+      ],
+      "id": "wzsQvIcQAdLzVzIy",
+      "role": "user"
+    }
+  ],
+  "trigger": "submit-message"
+}

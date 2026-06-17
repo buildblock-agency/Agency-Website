@@ -2,11 +2,6 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useGSAP } from "@gsap/react"
-
-gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
@@ -29,63 +24,13 @@ const services = [
 
 export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null)
-  
-  useGSAP(() => {
-    // Violent color inversion on scroll
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 50%",
-      end: "bottom 50%",
-      onEnter: () => {
-        gsap.to("body", { 
-          backgroundColor: "#F0EAD6", // Cream
-          color: "#080805", // Espresso
-          duration: 0.5, 
-          ease: "power2.out" 
-        })
-        gsap.to(containerRef.current, {
-          "--tw-border-opacity": "0.1",
-          borderColor: "#080805"
-        })
-      },
-      onLeaveBack: () => {
-        gsap.to("body", { 
-          backgroundColor: "#080805", // Espresso
-          color: "#F0EAD6", // Cream
-          duration: 0.5, 
-          ease: "power2.out" 
-        })
-      },
-      onLeave: () => {
-        gsap.to("body", { 
-          backgroundColor: "#080805", // Espresso
-          color: "#F0EAD6", // Cream
-          duration: 0.5, 
-          ease: "power2.out" 
-        })
-      },
-      onEnterBack: () => {
-         gsap.to("body", { 
-          backgroundColor: "#F0EAD6", // Cream
-          color: "#080805", // Espresso
-          duration: 0.5, 
-          ease: "power2.out" 
-        })
-      }
-    })
-
-    return () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
-      // Reset on unmount
-      gsap.set("body", { backgroundColor: "#080805", color: "#F0EAD6" })
-    }
-  }, { scope: containerRef })
+  const isInView = useInView(containerRef, { margin: "-20% 0px -20% 0px" })
 
   return (
     <section
       id="services"
       ref={containerRef}
-      className="relative py-32 transition-colors duration-500"
+      className={`relative py-32 transition-colors duration-500 ${isInView ? "services-invert" : ""}`}
     >
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         {/* Section header */}
@@ -103,7 +48,7 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group py-16 border-t border-current hover:bg-current/5 transition-colors duration-700 cursor-pointer px-4 -mx-4 rounded-xl"
+              className="group py-16 border-t border-current hover:bg-current/5 transition-colors duration-700 cursor-pointer px-4 -mx-4 rounded-none"
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 md:gap-16">
                 

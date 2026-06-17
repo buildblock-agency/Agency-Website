@@ -7,25 +7,30 @@ import Image from "next/image"
 const projects = [
   {
     id: 1,
-    title: "Peepal Cafe",
-    category: "Restaurant & Lifestyle",
+    title: "Sacred Vows",
+    category: "Wedding Registry & Showcase",
     year: "2024",
-    result: "Cinematic experience for a heritage property.",
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&h=1000&fit=crop",
-    aspect: "aspect-[4/3]" // Portrait style
+    result: "A cinematic digital registry and photography showcase, optimized to load high-resolution imagery instantly.",
+    image: "/projects/sacredvows.png",
+    video: "/projects/sacredvows.webp",
+    liveUrl: "https://www.sacredvows63.com/",
+    aspect: "aspect-[16/9]"
   },
   {
     id: 2,
-    title: "Sacred Vows",
-    category: "Wedding Photography",
-    year: "2024",
-    result: "Capturing memories in high fidelity.",
-    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600&h=1000&fit=crop",
-    aspect: "aspect-[16/9]" // Landscape style
-  },
+    title: "Shree Maa Chamunda Jyotish",
+    category: "Astro-Consultancy Portal",
+    year: "2026",
+    result: "Cosmic clarity for a premier astrology consultancy, driving seamless online consultations and local bookings.",
+    image: "/projects/smcj.png",
+    video: "/projects/smcj.webp",
+    liveUrl: "https://shrimaachamundajyotish.in/",
+    aspect: "aspect-[16/9]"
+  }
 ]
 
 export default function PortfolioSection() {
+  const [hoveredId, setHoveredId] = useState<number | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
@@ -64,18 +69,45 @@ export default function PortfolioSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
               className={`group flex flex-col ${index % 2 !== 0 ? 'md:items-end' : 'md:items-start'}`}
             >
               {/* Image with hover effect */}
-              <div className={`relative ${project.aspect} w-full md:w-[75%] overflow-hidden bg-card cursor-pointer`}>
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`relative ${project.aspect} w-full md:w-[75%] overflow-hidden bg-card cursor-pointer block border border-border/30`}
+              >
+                {/* Static cover image */}
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-[2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                  className="object-cover transition-transform duration-[2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-102"
+                  sizes="(max-width: 768px) 100vw, 75vw"
                 />
+
+                {/* Scrolling preview video (WebP animation) */}
+                <div
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    hoveredId === project.id ? "opacity-100" : "opacity-0 pointer-events-none"
+                  }`}
+                >
+                  <Image
+                    key={hoveredId === project.id ? `${project.id}-hover` : `${project.id}-idle`}
+                    src={hoveredId === project.id ? project.video : "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"}
+                    alt={`${project.title} scroll preview`}
+                    fill
+                    unoptimized
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 75vw"
+                  />
+                </div>
+                
                 {/* Darker overlay that reveals on hover */}
-                <div className="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors duration-1000" />
+                <div className="absolute inset-0 bg-background/30 group-hover:bg-transparent transition-colors duration-1000" />
                 
                 {/* Project Number (Large Serif overlay) */}
                 <div className="absolute top-6 left-6 md:top-10 md:left-10 mix-blend-difference pointer-events-none">
@@ -87,17 +119,24 @@ export default function PortfolioSection() {
                 {/* Custom hover label */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                   <div className="px-8 py-4 bg-foreground text-background text-technical text-[10px] transform scale-95 group-hover:scale-100 transition-transform duration-700">
-                    Explore
+                    Visit Live Site
                   </div>
                 </div>
-              </div>
+              </a>
 
               {/* Info Block */}
               <div className={`mt-12 w-full md:w-[75%] flex flex-col md:flex-row justify-between items-start gap-8 ${index % 2 !== 0 ? 'md:flex-row-reverse md:text-right' : ''}`}>
                 <div>
-                  <h3 className="text-display text-[clamp(2.5rem,5vw,4rem)] text-foreground mb-4 transition-colors duration-500 group-hover:text-primary">
-                    {project.title}
-                  </h3>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block"
+                  >
+                    <h3 className="text-display text-[clamp(2.5rem,5vw,4rem)] text-foreground mb-4 transition-colors duration-500 group-hover:text-primary">
+                      {project.title}
+                    </h3>
+                  </a>
                   <div className={`flex items-center gap-4 ${index % 2 !== 0 ? 'md:justify-end' : 'justify-start'}`}>
                     <span className="text-technical text-[10px] text-primary">
                       {project.category}

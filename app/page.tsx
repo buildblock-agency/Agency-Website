@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Navigation from "@/components/navigation"
 import HeroSection from "@/components/sections/hero-section"
 import ServicesSection from "@/components/sections/services-section"
@@ -8,20 +9,28 @@ import ProcessSection from "@/components/sections/process-section"
 import AboutSection from "@/components/sections/about-section"
 import ContactSection from "@/components/sections/contact-section"
 import Footer from "@/components/footer"
+import Preloader from "@/components/preloader"
 
 export default function Home() {
+  const [isPreloaderFinished, setIsPreloaderFinished] = useState(false)
+
   return (
     <>
-      <Navigation />
-      <main>
-        <HeroSection />
-        <ServicesSection />
-        <PortfolioSection />
-        <ProcessSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-      <Footer />
+      <Preloader onComplete={() => setIsPreloaderFinished(true)} />
+      {isPreloaderFinished && (
+        <>
+          <Navigation />
+          <main>
+            <HeroSection />
+            <ServicesSection />
+            <PortfolioSection />
+            <ProcessSection />
+            <AboutSection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </>
+      )}
     </>
   )
 }

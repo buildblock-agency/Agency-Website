@@ -104,44 +104,44 @@ export default function HeroSection() {
         </div>
 
         {/* Massive Editorial Headline */}
-        <div className="flex flex-col gap-0 md:gap-2 mb-16 md:mb-24 w-full">
+        <h1 className="flex flex-col gap-0 md:gap-2 mb-16 md:mb-24 w-full">
           <div className="overflow-hidden">
-            <motion.h1
+            <motion.span
               custom={1}
               initial="hidden"
               animate="visible"
               variants={maskVariants}
-              className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter"
+              className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter block"
             >
               We build
-            </motion.h1>
+            </motion.span>
           </div>
           
           <div className="overflow-hidden pl-[10vw] md:pl-[15vw]">
-            <motion.h1
+            <motion.span
               custom={2}
               initial="hidden"
               animate="visible"
               variants={maskVariants}
               className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter flex items-center gap-4 md:gap-8"
             >
-              <span className="font-serif italic text-primary">digital</span>
-              <span>worlds</span>
-            </motion.h1>
+              <span className="font-serif italic text-primary">websites</span>
+              <span>that</span>
+            </motion.span>
           </div>
           
           <div className="overflow-hidden pl-[5vw] md:pl-[5vw] mt-2 md:mt-0">
-            <motion.h1
+            <motion.span
               custom={3}
               initial="hidden"
               animate="visible"
               variants={maskVariants}
-              className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter"
+              className="text-display text-[clamp(4rem,12vw,10rem)] text-foreground tracking-tighter block"
             >
-              for the bold.
-            </motion.h1>
+              make people stop.
+            </motion.span>
           </div>
-        </div>
+        </h1>
 
         {/* Bottom Metadata & CTA - Flex layout */}
         <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-12 border-t border-border pt-8 md:pt-12">
@@ -154,8 +154,8 @@ export default function HeroSection() {
               variants={maskVariants}
               className="text-[14px] md:text-[16px] text-muted-foreground leading-relaxed font-serif italic"
             >
-              Cinematic web experiences that refuse to blend in. 
-              Built with obsessive attention to detail in Jodhpur.
+              A two-person studio in Jodhpur building cinematic web experiences
+              for brands that know what they're worth.
             </motion.p>
           </div>
 

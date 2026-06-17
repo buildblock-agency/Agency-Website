@@ -29,8 +29,6 @@ const footerLinks = {
   ],
   social: [
     { label: "Instagram", href: "https://instagram.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
-    { label: "X (Twitter)", href: "https://x.com" },
   ],
 }
 
@@ -66,7 +64,7 @@ export default function Footer() {
                 alt="BuildBlock Dev Studio"
                 width={40}
                 height={40}
-                className="grayscale invert brightness-200"
+                className=""
               />
               <span className="text-technical text-[14px] font-bold text-foreground">
                 BuildBlock
