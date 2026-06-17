@@ -23,7 +23,7 @@ const newsreader = Newsreader({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://buildblock.dev'),
+  metadataBase: new URL('https://www.buildblock.in'),
   title: {
     default: 'BuildBlock Dev Studio | Cinematic Web Experiences',
     template: '%s | BuildBlock Dev Studio'
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     'cinematic web design',
     'UI/UX design studio'
   ],
-  authors: [{ name: 'BuildBlock Dev Studio', url: 'https://buildblock.dev' }],
+  authors: [{ name: 'BuildBlock Dev Studio', url: 'https://www.buildblock.in' }],
   creator: 'BuildBlock Dev Studio',
   publisher: 'BuildBlock Dev Studio',
   formatDetection: {
@@ -51,12 +51,12 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: 'https://buildblock.dev',
+    canonical: 'https://www.buildblock.in',
   },
   openGraph: {
     title: 'BuildBlock Dev Studio | Cinematic Web Experiences',
     description: 'We build websites that make people stop. Premium creative development for brands that refuse to blend in.',
-    url: 'https://buildblock.dev',
+    url: 'https://www.buildblock.in',
     siteName: 'BuildBlock Dev Studio',
     locale: 'en_US',
     type: 'website',
@@ -105,8 +105,8 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BuildBlock Dev Studio",
-    "url": "https://buildblock.dev",
-    "logo": "https://buildblock.dev/logo.png",
+    "url": "https://www.buildblock.in",
+    "logo": "https://www.buildblock.in/logo.png",
     "sameAs": [
       "https://github.com/buildblockdev",
       "https://twitter.com/buildblockdev"
@@ -123,10 +123,10 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "BuildBlock Dev Studio",
-    "url": "https://buildblock.dev",
+    "url": "https://www.buildblock.in",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://buildblock.dev/?s={search_term_string}",
+      "target": "https://www.buildblock.in/?s={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   },
@@ -134,9 +134,9 @@ const jsonLd = [
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "BuildBlock Dev Studio",
-    "image": "https://buildblock.dev/logo.png",
-    "@id": "https://buildblock.dev/#website",
-    "url": "https://buildblock.dev",
+    "image": "https://www.buildblock.in/logo.png",
+    "@id": "https://www.buildblock.in/#website",
+    "url": "https://www.buildblock.in",
     "telephone": "",
     "address": {
       "@type": "PostalAddress",

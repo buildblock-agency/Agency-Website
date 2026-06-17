@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://buildblock.dev'
+  const baseUrl = 'https://www.buildblock.in'
   // Use a stable date representing the last significant content update
   const lastModified = new Date('2024-06-17') 
 
