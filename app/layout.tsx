@@ -24,18 +24,41 @@ const newsreader = Newsreader({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://buildblock.dev'),
-  title: 'BuildBlock Dev Studio | Cinematic Web Experiences',
-  description: 'We build websites that make people stop. Cinematic web experiences for brands that refuse to blend in. 12 brands · 0 templates · Jodhpur, India.',
-  keywords: ['web development', 'creative agency', 'landing pages', 'premium websites', 'motion design', 'BuildBlock', 'Jodhpur', 'India', 'interaction design'],
-  authors: [{ name: 'BuildBlock Dev Studio' }],
+  title: {
+    default: 'BuildBlock Dev Studio | Cinematic Web Experiences',
+    template: '%s | BuildBlock Dev Studio'
+  },
+  description: 'BuildBlock is a premium creative development studio in Jodhpur, India. We build cinematic web experiences, high-converting landing pages, and bespoke digital solutions for global brands.',
+  keywords: [
+    'web development Jodhpur', 
+    'creative agency India', 
+    'landing page design', 
+    'premium websites', 
+    'motion design studio', 
+    'BuildBlock Dev Studio', 
+    'interaction design', 
+    'GSAP animations', 
+    'Next.js developers India',
+    'cinematic web design',
+    'UI/UX design studio'
+  ],
+  authors: [{ name: 'BuildBlock Dev Studio', url: 'https://buildblock.dev' }],
+  creator: 'BuildBlock Dev Studio',
+  publisher: 'BuildBlock Dev Studio',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: 'https://buildblock.dev',
   },
   openGraph: {
     title: 'BuildBlock Dev Studio | Cinematic Web Experiences',
-    description: 'We build websites that make people stop.',
+    description: 'We build websites that make people stop. Premium creative development for brands that refuse to blend in.',
     url: 'https://buildblock.dev',
     siteName: 'BuildBlock Dev Studio',
+    locale: 'en_US',
     type: 'website',
     images: [
       {
@@ -49,8 +72,9 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BuildBlock Dev Studio | Cinematic Web Experiences',
-    description: 'We build websites that make people stop.',
+    description: 'We build websites that make people stop. Premium creative development in Jodhpur.',
     images: ['/logo.png'],
+    creator: '@buildblockdev',
   },
   icons: {
     icon: [
@@ -64,6 +88,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: true,
     googleBot: {
       index: true,
       follow: true,
@@ -72,46 +97,76 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  category: 'technology',
 }
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "BuildBlock Dev Studio",
-  "image": "https://buildblock.dev/logo.png",
-  "@id": "https://buildblock.dev/#website",
-  "url": "https://buildblock.dev",
-  "telephone": "",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "",
-    "addressLocality": "Jodhpur",
-    "addressRegion": "Rajasthan",
-    "postalCode": "342001",
-    "addressCountry": "IN"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 26.2389,
-    "longitude": 73.0243
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday"
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BuildBlock Dev Studio",
+    "url": "https://buildblock.dev",
+    "logo": "https://buildblock.dev/logo.png",
+    "sameAs": [
+      "https://github.com/buildblockdev",
+      "https://twitter.com/buildblockdev"
     ],
-    "opens": "09:00",
-    "closes": "18:00"
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "",
+      "contactType": "customer service",
+      "areaServed": "Worldwide",
+      "availableLanguage": "English"
+    }
   },
-  "sameAs": [
-    "https://github.com/buildblockdev"
-  ],
-  "priceRange": "$$$$"
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "BuildBlock Dev Studio",
+    "url": "https://buildblock.dev",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://buildblock.dev/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "BuildBlock Dev Studio",
+    "image": "https://buildblock.dev/logo.png",
+    "@id": "https://buildblock.dev/#website",
+    "url": "https://buildblock.dev",
+    "telephone": "",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Jodhpur",
+      "addressLocality": "Jodhpur",
+      "addressRegion": "Rajasthan",
+      "postalCode": "342001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 26.2389,
+      "longitude": 73.0243
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$$$",
+    "description": "Premium web development studio building cinematic web experiences."
+  }
+]
 
 export default function RootLayout({
   children,
@@ -127,6 +182,32 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans antialiased overflow-x-hidden">
+        {/* AEO Optimized Content (Visually Hidden) */}
+        <div 
+          className="sr-only" 
+          aria-hidden="true"
+        >
+          <h1>BuildBlock Dev Studio - Premium Web Development in Jodhpur, India</h1>
+          <p>
+            BuildBlock is a creative development studio specializing in cinematic web experiences, high-performance landing pages, and custom Next.js development. 
+            Based in Jodhpur, Rajasthan, we serve global brands with premium design and motion-driven interaction.
+          </p>
+          <h2>Our Services</h2>
+          <ul>
+            <li>Cinematic Landing Pages: High-converting, animated pages for premium brands.</li>
+            <li>Brand Websites: Bespoke digital presence built with Next.js and Tailwind CSS.</li>
+            <li>Motion & Interaction Design: Advanced GSAP-powered animations and scroll experiences.</li>
+            <li>White-Label Development: Reliable development partner for design agencies.</li>
+          </ul>
+          <p>
+            Operating as a borderless collective, BuildBlock combines remote expertise with high-end craft to deliver websites that make people stop.
+          </p>
+          <address>
+            BuildBlock Dev Studio<br />
+            Jodhpur, Rajasthan, India 342001
+          </address>
+        </div>
+
         <Cursor />
         <AIAssistant />
         <SmoothScroll>
