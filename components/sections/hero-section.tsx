@@ -59,7 +59,7 @@ export default function HeroSection({ isVisible = true }: { isVisible?: boolean 
       transition: {
         duration: 1.4,
         delay: 1.2 + (i * 0.15), // Added delay to work with the staggered page reveal
-        ease: [0.19, 1, 0.22, 1] // Apple-like smooth ease
+        ease: [0.19, 1, 0.22, 1] as const // Apple-like smooth ease
       }
     })
   }
