@@ -9,7 +9,7 @@ const projects = [
     id: 1,
     title: "Sacred Vows",
     category: "Wedding Registry & Showcase",
-    year: "2024",
+    year: "2026",
     result: "A cinematic digital registry and photography showcase, optimized to load high-resolution imagery instantly.",
     image: "/projects/sacredvows.png",
     video: "/projects/sacredvows.webp",

@@ -28,7 +28,7 @@ const footerLinks = {
     { label: "Contact", href: "#contact" },
   ],
   social: [
-    { label: "Instagram", href: "https://instagram.com" },
+    { label: "Instagram", href: "https://www.instagram.com/buildblock.dev/" },
   ],
 }
 

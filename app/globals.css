@@ -73,6 +73,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground selection:bg-primary/30 selection:text-foreground;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";

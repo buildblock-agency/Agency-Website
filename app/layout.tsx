@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono, Newsreader } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { SmoothScroll } from '@/components/smooth-scroll'
 import Cursor from '@/components/cursor'
 import AIAssistant from '@/components/ai-assistant'
 import './globals.css'
 
-const geist = Geist({ 
+const geist = Geist({
   subsets: ["latin"],
   variable: '--font-geist'
 })
 
-const geistMono = Geist_Mono({ 
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: '--font-mono'
 })
@@ -30,14 +31,14 @@ export const metadata: Metadata = {
   },
   description: 'BuildBlock is a premium creative development studio in Jodhpur, India. We build cinematic web experiences, high-converting landing pages, and bespoke digital solutions for global brands.',
   keywords: [
-    'web development Jodhpur', 
-    'creative agency India', 
-    'landing page design', 
-    'premium websites', 
-    'motion design studio', 
-    'BuildBlock Dev Studio', 
-    'interaction design', 
-    'GSAP animations', 
+    'web development Jodhpur',
+    'creative agency India',
+    'landing page design',
+    'premium websites',
+    'motion design studio',
+    'BuildBlock Dev Studio',
+    'interaction design',
+    'GSAP animations',
     'Next.js developers India',
     'cinematic web design',
     'UI/UX design studio'
@@ -108,8 +109,9 @@ const jsonLd = [
     "url": "https://www.buildblock.in",
     "logo": "https://www.buildblock.in/logo.png",
     "sameAs": [
-      "https://github.com/buildblockdev",
-      "https://twitter.com/buildblockdev"
+      "https://github.com/buildblock-agency",
+      "https://twitter.com/buildblockdev",
+      "https://www.instagram.com/buildblock.dev/"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -183,13 +185,13 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased overflow-x-hidden">
         {/* AEO Optimized Content (Visually Hidden) */}
-        <div 
-          className="sr-only" 
+        <div
+          className="sr-only"
           aria-hidden="true"
         >
           <h1>BuildBlock Dev Studio - Premium Web Development in Jodhpur, India</h1>
           <p>
-            BuildBlock is a creative development studio specializing in cinematic web experiences, high-performance landing pages, and custom Next.js development. 
+            BuildBlock is a creative development studio specializing in cinematic web experiences, high-performance landing pages, and custom Next.js development.
             Based in Jodhpur, Rajasthan, we serve global brands with premium design and motion-driven interaction.
           </p>
           <h2>Our Services</h2>
@@ -213,7 +215,12 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
         </SmoothScroll>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   )

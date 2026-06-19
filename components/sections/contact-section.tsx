@@ -16,6 +16,8 @@ const businessTypes = [
 ]
 
 const budgetRanges = [
+  "₹10K - ₹20K",
+  "₹20K - ₹50K",
   "₹50K - ₹1L",
   "₹1L - ₹2.5L",
   "₹2.5L - ₹5L",
